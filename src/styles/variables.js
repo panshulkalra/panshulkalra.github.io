@@ -4,23 +4,23 @@ const variables = css`
   :root {
     /* Backgrounds - Sophisticated Ivory/Cream Palette */
     --dark-navy: #e9e4d5;      /* Borders and subtle dividers */
-    --navy: #faf1d4;           /* MAIN BACKGROUND: Yellowish off-white / Warm Cream */
+    --navy: #f9f2d8;           /* MAIN BACKGROUND: Yellowish off-white / Warm Cream */
     --light-navy: #ffffff;     /* Card/Section backgrounds: Pure white for clean separation */
     --lightest-navy: #f3edd9;  /* Hover states for cards */
     --navy-shadow: rgba(45, 40, 30, 0.06); /* Ultra-soft warm shadow for depth */
     
     /* Text - Balanced Warm Charcoal Palette */
-    --dark-slate: #a6a090;     /* Lightest text / metadata */
-    --slate: #7c7667;          /* Muted text */
-    --light-slate: #545045;    /* Secondary text */
-    --lightest-slate: #2c2a24; /* MAIN TEXT / Subheadings */
+    --dark-slate: #777368;     /* Lightest text / metadata */
+    --slate: #5a554b;          /* Muted text */
+    --light-slate: #3e3a31;    /* Secondary text */
+    --lightest-slate: #22211b; /* MAIN TEXT / Subheadings */
     --white: #181714;          /* Headings: Warm near-black for high contrast readability */
 
     /* Accents - Muted & Professional (No harsh or overly bold tones) */
-    --green: #385a6c;          /* Muted Slate Blue: Sophisticated, highly readable accent */
+    --green: #416477;          /* Muted Slate Blue: Sophisticated, highly readable accent */
     --green-tint: rgba(56, 90, 108, 0.1); /* Soft slate tint for button hover states */
-    --pink: #b8738d;           /* Soft dusty rose */
-    --blue: #608294;           /* Soft steel blue */
+    --pink: #fff4a3;           /* Soft dusty rose */
+    --blue: #416477;           /* Soft steel blue */
 
     --font-sans: 'Calibre', 'Inter', 'San Francisco', 'SF Pro Text', -apple-system, system-ui,
       sans-serif;
