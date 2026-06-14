@@ -2,25 +2,25 @@ import { css } from 'styled-components';
 
 const variables = css`
   :root {
-    /* Backgrounds - Off-White Palette (Original Variable Names) */
-    --dark-navy: #ffd2fa;      /* Borders and subtle dividers */
-    --navy: #feffdc;           /* MAIN BACKGROUND: Off-white */
-    --light-navy: #5d7f88;     /* Card/Section backgrounds: Pure white */
-    --lightest-navy: #86c3ff;  /* Hover states for cards */
-    --navy-shadow: rgba(0, 0, 0, 0.08); /* Softened shadow for light mode */
+    /* Backgrounds - Sophisticated Ivory/Cream Palette */
+    --dark-navy: #e9e4d5;      /* Borders and subtle dividers */
+    --navy: #faf1d4;           /* MAIN BACKGROUND: Yellowish off-white / Warm Cream */
+    --light-navy: #ffffff;     /* Card/Section backgrounds: Pure white for clean separation */
+    --lightest-navy: #f3edd9;  /* Hover states for cards */
+    --navy-shadow: rgba(45, 40, 30, 0.06); /* Ultra-soft warm shadow for depth */
     
-    /* Text - Greyish Palette (Original Variable Names) */
-    --dark-slate: #94a3b8;     /* Lightest text / metadata */
-    --slate: #64748b;          /* Secondary text */
-    --light-slate: #282e36;    /* MAIN TEXT: Greyish */
-    --lightest-slate: #1e293b; /* Headings: Dark grey */
-    --white: #0f172a;          /* Previously white, now almost black for high contrast */
+    /* Text - Balanced Warm Charcoal Palette */
+    --dark-slate: #a6a090;     /* Lightest text / metadata */
+    --slate: #7c7667;          /* Muted text */
+    --light-slate: #545045;    /* Secondary text */
+    --lightest-slate: #2c2a24; /* MAIN TEXT / Subheadings */
+    --white: #181714;          /* Headings: Warm near-black for high contrast readability */
 
-    /* Accents */
-    --green: #64b9ff;          /* Kept original Neon Green */
-    --green-tint: rgba(100, 255, 218, 0.1);
-    --pink: #f57dff;
-    --blue: #57cbff;
+    /* Accents - Muted & Professional (No harsh or overly bold tones) */
+    --green: #385a6c;          /* Muted Slate Blue: Sophisticated, highly readable accent */
+    --green-tint: rgba(56, 90, 108, 0.1); /* Soft slate tint for button hover states */
+    --pink: #b8738d;           /* Soft dusty rose */
+    --blue: #608294;           /* Soft steel blue */
 
     --font-sans: 'Calibre', 'Inter', 'San Francisco', 'SF Pro Text', -apple-system, system-ui,
       sans-serif;
