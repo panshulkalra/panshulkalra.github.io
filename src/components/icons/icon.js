@@ -12,7 +12,7 @@ import {
   IconLogo,
   IconStar,
   IconTwitter,
-  IconYoutube,
+  IconYouTube,
 } from '@components/icons';
 
 const Icon = ({ name }) => {
