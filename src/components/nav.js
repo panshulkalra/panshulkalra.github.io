@@ -203,6 +203,29 @@ const Nav = ({ isHome }) => {
     </a>
   );
 
+  // Bypass the main navigation on all non-home pages
+  if (!isHome) {
+    return (
+      <header style={{ position: 'absolute', top: '40px', left: '50px', zIndex: 99 }}>
+        <Link to="/" aria-label="Back to home" style={{ color: 'var(--green)' }}>
+          <svg 
+            width="35" 
+            height="35" 
+            viewBox="0 0 24 24" 
+            fill="none" 
+            stroke="currentColor" 
+            strokeWidth="2" 
+            strokeLinecap="round" 
+            strokeLinejoin="round"
+          >
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+        </Link>
+      </header>
+    );
+  }
+
   return (
     <StyledHeader scrollDirection={scrollDirection} scrolledToTop={scrolledToTop}>
       <StyledNav>
