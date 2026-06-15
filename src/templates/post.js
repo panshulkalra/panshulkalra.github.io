@@ -61,39 +61,6 @@ const PostTemplate = ({ data, location }) => {
       <Helmet title={title} />
 
       <StyledPostContainer>
-        
-        {/* The Native History Back Arrow */}
-        <button 
-          onClick={() => window.history.back()} 
-          aria-label="Go back" 
-          style={{ 
-            background: 'none',
-            border: 'none',
-            padding: 0,
-            cursor: 'pointer',
-            display: 'inline-block', 
-            marginBottom: '40px', 
-            color: 'var(--green)',
-            transition: 'var(--transition)'
-          }}
-          onMouseOver={(e) => e.currentTarget.style.transform = 'translateX(-5px)'}
-          onMouseOut={(e) => e.currentTarget.style.transform = 'translateX(0px)'}
-        >
-          <svg 
-            width="35" 
-            height="35" 
-            viewBox="0 0 24 24" 
-            fill="none" 
-            stroke="currentColor" 
-            strokeWidth="2" 
-            strokeLinecap="round" 
-            strokeLinejoin="round"
-          >
-            <line x1="19" y1="12" x2="5" y2="12"></line>
-            <polyline points="12 19 5 12 12 5"></polyline>
-          </svg>
-        </button>
-
         <StyledPostHeader>
           <h1 className="medium-heading">{title}</h1>
           <p className="subtitle">

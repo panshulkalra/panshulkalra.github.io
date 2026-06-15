@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { Layout } from '@components';
 
 const StyledMainContainer = styled.main`
-  padding: 100px 0;
+  padding: 150px 0 100px; /* Increased top padding from 100px to 150px */
 
   header {
     text-align: center;
@@ -13,13 +13,6 @@ const StyledMainContainer = styled.main`
 
     .title {
       font-size: clamp(40px, 5vw, 60px);
-    }
-
-    .subtitle {
-      color: var(--green);
-      font-family: var(--font-mono);
-      font-size: var(--fz-md);
-      margin-top: 10px;
     }
   }
 
@@ -82,12 +75,11 @@ const BlogPage = ({ location, data }) => {
 
   return (
     <Layout location={location}>
-      <Helmet title="Engineering Archive" />
+      <Helmet title="All my blogs" />
 
       <StyledMainContainer className="fillHeight">
         <header>
-          <h1 className="title">Engineering Archive</h1>
-          <p className="subtitle">Technical Post-Mortems & Market Analysis</p>
+          <h1 className="title">All my blogs</h1>
         </header>
 
         <div className="posts-grid">
