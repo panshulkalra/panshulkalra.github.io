@@ -4,24 +4,26 @@ module.exports = {
   socialMedia: [
     {
       name: 'GitHub',
-      url: 'https://github.com/bchiang7',
-    },
-    {
-      name: 'Instagram',
-      url: 'https://www.instagram.com/bchiang7',
-    },
-    {
-      name: 'Twitter',
-      url: 'https://twitter.com/bchiang7',
+      url: 'https://github.com/panshulkalra',
     },
     {
       name: 'Linkedin',
-      url: 'https://www.linkedin.com/in/bchiang7',
+      url: 'https://www.linkedin.com/in/panshul-kalra-6808a9381',
     },
     {
-      name: 'Codepen',
-      url: 'https://codepen.io/bchiang7',
+      name: 'Instagram',
+      url: 'https://www.instagram.com/panshonrepeat?igsh=enl2bDN0ajRtc2p4&utm_source=qr',
     },
+    {
+      name: 'YouTube',
+      url: 'https://www.youtube.com/@PanshOnRepeat',
+    },
+    
+    {
+      name: 'X',
+      url: 'https://x.com/panshul589625?s=11',
+    },
+    
   ],
 
   navLinks: [
