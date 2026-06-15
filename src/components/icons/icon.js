@@ -37,7 +37,7 @@ const Icon = ({ name }) => {
       return <IconLogo />;
     case 'Star':
       return <IconStar />;
-    case 'Twitter':
+    case 'X':
       return <IconTwitter />;
     case 'YouTube':
       return <IconYouTube />;
