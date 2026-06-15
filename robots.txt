@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap: https://panshulkalra-portfolio.vercel.app/sitemap.xml
+Host: https://panshulkalra-portfolio.vercel.app
