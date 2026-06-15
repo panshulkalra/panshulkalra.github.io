@@ -1,22 +1,33 @@
 import React from 'react';
 
 const IconLoader = () => (
-  <svg id="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <svg id="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 100">
     <title>Loader Logo</title>
     <g>
-      <text x="50" y="62" fill="currentColor" fontSize="42px" fontFamily="system-ui, sans-serif" fontWeight="bold" textAnchor="middle">P</text>
+      {/* The Bounding Box */}
       <path
         stroke="currentColor"
-        strokeWidth="5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M 50, 5
-                  L 11, 27
-                  L 11, 72
-                  L 50, 95
-                  L 89, 73
-                  L 89, 28 z"
+        strokeWidth="2"
+        strokeLinecap="square"
+        strokeLinejoin="miter"
+        fill="none"
+        d="M 5 5 L 395 5 L 395 95 L 5 95 Z"
       />
+      {/* Your Name */}
+      <text
+        x="200"
+        y="54"
+        fill="currentColor"
+        fontSize="26px"
+        fontFamily="var(--font-sans)"
+        fontWeight="600"
+        textAnchor="middle"
+        alignmentBaseline="middle"
+        letterSpacing="4px"
+        opacity="0" 
+      >
+        Panshul Kalra
+      </text>
     </g>
   </svg>
 );

@@ -19,7 +19,7 @@ const StyledLoader = styled.div`
 
   .logo-wrapper {
     width: max-content;
-    max-width: 100px;
+    max-width: 400px;
     transition: var(--transition);
     opacity: ${props => (props.isMounted ? 1 : 0)};
     svg {
@@ -29,7 +29,7 @@ const StyledLoader = styled.div`
       margin: 0 auto;
       fill: none;
       user-select: none;
-      #B {
+      #logo path {
         opacity: 0;
       }
     }
@@ -45,26 +45,30 @@ const Loader = ({ finishLoading }) => {
     });
 
     loader
+      // 1. Draw the Rectangle very quickly
       .add({
         targets: '#logo path',
-        delay: 300,
-        duration: 1500,
-        easing: 'easeInOutQuart',
-        strokeDashoffset: [anime.setDashoffset, 0],
-      })
-      .add({
-        targets: '#logo #B',
+        delay: 200,
         duration: 700,
         easing: 'easeInOutQuart',
+        strokeDashoffset: [anime.setDashoffset, 0],
         opacity: 1,
       })
+      // 2. Flash your name inside the box
+      .add({
+        targets: '#logo text',
+        duration: 300,
+        easing: 'linear',
+        opacity: [0, 1],
+      }, '-=400') // Starts slightly before the box finishes drawing
+      // 3. Hold for a split second, then vanish
       .add({
         targets: '#logo',
-        delay: 500,
+        delay: 400,
         duration: 300,
         easing: 'easeInOutQuart',
         opacity: 0,
-        scale: 0.1,
+        scale: 0.9,
       })
       .add({
         targets: '.loader',
@@ -84,7 +88,6 @@ const Loader = ({ finishLoading }) => {
   return (
     <StyledLoader className="loader" isMounted={isMounted}>
       <Helmet bodyAttributes={{ class: `hidden` }} />
-
       <div className="logo-wrapper">
         <IconLoader />
       </div>
