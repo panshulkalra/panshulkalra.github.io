@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { graphql, Link } from 'gatsby';
 import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
 import { Layout } from '@components';
 
 const StyledMainContainer = styled.main`
-  /* Increased top padding to 220px to completely clear the fixed navbar */
   padding: 220px 0 100px;
   max-width: 1000px;
   margin: 0 auto;
@@ -24,25 +23,6 @@ const StyledMainContainer = styled.main`
       font-family: var(--font-mono);
       font-size: var(--fz-md);
       margin-top: 10px;
-    }
-  }
-
-  .back-to-series-btn {
-    color: var(--green);
-    background: none;
-    border: 1px solid var(--green);
-    border-radius: var(--border-radius);
-    padding: 0.75rem 1rem;
-    font-family: var(--font-mono);
-    font-size: var(--fz-xs);
-    cursor: pointer;
-    margin-bottom: 40px;
-    transition: var(--transition);
-    display: inline-flex;
-    align-items: center;
-
-    &:hover {
-      background-color: var(--green-tint);
     }
   }
 
@@ -72,7 +52,6 @@ const StyledMainContainer = styled.main`
     margin-bottom: 60px;
   }
 
-  /* Folder Card Structure (For Series) */
   .folder-card {
     background-color: var(--light-navy);
     padding: 2.25rem 1.75rem;
@@ -117,7 +96,6 @@ const StyledMainContainer = styled.main`
     }
   }
 
-  /* Standard Article Card Structure (For Single Posts or Parts) */
   .article-card {
     background-color: var(--light-navy);
     padding: 2rem 1.75rem;
@@ -162,10 +140,7 @@ const StyledMainContainer = styled.main`
 const BlogPage = ({ location, data }) => {
   const posts = data.allMarkdownRemark.edges;
   
-  // Track which series folder the user has clicked open
-  const [activeSeries, setActiveSeries] = useState(null);
-
-  // Grouping pipeline
+  // 1. Grouping pipeline
   const seriesGroups = {};
   const independentPosts = [];
 
@@ -181,8 +156,44 @@ const BlogPage = ({ location, data }) => {
     }
   });
 
-  // Calculate total counts for display on the folders
   const uniqueSeriesNames = Object.keys(seriesGroups);
+
+  // 2. State Initialization: Check if the URL has a hash (e.g., #nvidia-series) when loading
+  const [activeSeries, setActiveSeries] = useState(() => {
+    if (typeof window !== 'undefined' && window.location.hash) {
+      const hash = window.location.hash.substring(1);
+      const match = uniqueSeriesNames.find(
+        name => name.replace(/\s+/g, '-').toLowerCase() === hash
+      );
+      return match || null;
+    }
+    return null;
+  });
+
+  // 3. History Event Listener: Watch for the universal back button being pressed
+  useEffect(() => {
+    const handlePopState = () => {
+      if (window.location.hash) {
+        const hash = window.location.hash.substring(1);
+        const match = uniqueSeriesNames.find(
+          name => name.replace(/\s+/g, '-').toLowerCase() === hash
+        );
+        setActiveSeries(match || null);
+      } else {
+        setActiveSeries(null);
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, [uniqueSeriesNames]);
+
+  // 4. Interaction Engine: Push to browser history when opening a folder
+  const handleOpenSeries = (seriesName) => {
+    const hash = seriesName.replace(/\s+/g, '-').toLowerCase();
+    window.history.pushState(null, '', `#${hash}`);
+    setActiveSeries(seriesName);
+  };
 
   return (
     <Layout location={location}>
@@ -204,14 +215,13 @@ const BlogPage = ({ location, data }) => {
                 <div className="unified-grid">
                   {uniqueSeriesNames.map(seriesName => {
                     const totalParts = seriesGroups[seriesName].length;
-                    // Grab description from the first part to act as the folder description
                     const folderDesc = seriesGroups[seriesName][0].frontmatter.description;
 
                     return (
                       <div 
                         key={seriesName} 
                         className="folder-card"
-                        onClick={() => setActiveSeries(seriesName)}
+                        onClick={() => handleOpenSeries(seriesName)}
                       >
                         <div className="folder-icon">📂</div>
                         <h3>{seriesName}</h3>
@@ -250,10 +260,6 @@ const BlogPage = ({ location, data }) => {
           
           /* VIEW 2: Sub-Page (Inside a Specific Series Folder) */
           <>
-            <button className="back-to-series-btn" onClick={() => setActiveSeries(null)}>
-              ← Back to All Blogs
-            </button>
-
             <header style={{ textAlign: 'left', marginBottom: '40px' }}>
               <span className="subtitle">Series Publication</span>
               <h1 className="title" style={{ textAlign: 'left', fontSize: 'clamp(30px, 4vw, 45px)' }}>
