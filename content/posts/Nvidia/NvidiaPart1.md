@@ -2,7 +2,7 @@
 title: 'The overnight success, 30 years in the making.'
 description: 'The rise of Nvidia'
 date: '2026-06-15'
-slug: '/blog/nvidia/part-1'
+slug: '/blog/nvidia-series/part-1'
 series: 'Nvidia Series'
 tags:
   - Tech History
