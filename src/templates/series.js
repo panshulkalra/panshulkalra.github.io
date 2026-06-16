@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { graphql, Link } from 'gatsby';
 import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
@@ -75,6 +75,21 @@ const SeriesTemplate = ({ pageContext, data, location }) => {
   const { series } = pageContext;
   const posts = data.allMarkdownRemark.edges;
 
+  // 1. Save Position Function (Tagged dynamically to the specific series name)
+  const saveScroll = () => {
+    window.sessionStorage.setItem(`scroll-${series}`, window.scrollY);
+  };
+
+  // 2. Restore Position Listener
+  useEffect(() => {
+    if (location.state?.customBack) {
+      const savedPosition = window.sessionStorage.getItem(`scroll-${series}`);
+      if (savedPosition) {
+        setTimeout(() => window.scrollTo(0, parseInt(savedPosition, 10)), 10);
+      }
+    }
+  }, [location, series]);
+
   return (
     <Layout location={location}>
       <Helmet title={`${series} | Publications`} />
@@ -93,7 +108,7 @@ const SeriesTemplate = ({ pageContext, data, location }) => {
             });
 
             return (
-              <Link key={i} to={slug} className="article-card">
+              <Link key={i} to={slug} className="article-card" onClick={saveScroll}>
                 <span className="date">Part {i + 1} — {formattedDate}</span>
                 <h3>{title}</h3>
                 <p>{description}</p>

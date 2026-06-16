@@ -203,20 +203,22 @@ const Nav = ({ isHome }) => {
     </a>
   );
 
- // Bypass the main navigation on all non-home pages
+// Bypass the main navigation on all non-home pages
   if (!isHome) {
-    const handleSmartBack = () => {
-      // Get the current URL (e.g., /blog/nvidia/part-1)
+    const handleSmartBack = (e) => {
+      e.preventDefault();
+      
       const currentPath = window.location.pathname.replace(/\/$/, ''); 
       const pathParts = currentPath.split('/');
 
-      // If we are deep in a folder (e.g., length > 2), chop off the last part and go up one level
+      // Hierarchical Routing Engine
       if (pathParts.length > 2) {
         pathParts.pop();
-        navigate(pathParts.join('/') + '/');
+        // Send them up one level, and attach the hidden scroll payload
+        navigate(pathParts.join('/') + '/', { state: { customBack: true } });
       } else {
-        // If we are just at /blog or /about, go back to the home page
-        navigate('/');
+        // If we are at /blog, send them perfectly to the homepage blogs section
+        navigate('/#blogs');
       }
     };
 
@@ -244,6 +246,7 @@ const Nav = ({ isHome }) => {
       </header>
     );
   }
+  
   return (
     <StyledHeader scrollDirection={scrollDirection} scrolledToTop={scrolledToTop}>
       <StyledNav>

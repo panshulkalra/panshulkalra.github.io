@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { graphql, Link } from 'gatsby';
 import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
@@ -154,6 +154,21 @@ const BlogPage = ({ location, data }) => {
 
   const uniqueSeriesNames = Object.keys(seriesGroups);
 
+  // 1. Save Position Function
+  const saveScroll = () => {
+    window.sessionStorage.setItem('scroll-blog-main', window.scrollY);
+  };
+
+  // 2. Restore Position Listener
+  useEffect(() => {
+    if (location.state?.customBack) {
+      const savedPosition = window.sessionStorage.getItem('scroll-blog-main');
+      if (savedPosition) {
+        setTimeout(() => window.scrollTo(0, parseInt(savedPosition, 10)), 10);
+      }
+    }
+  }, [location]);
+
   return (
     <Layout location={location}>
       <Helmet title="Publications | Portfolio" />
@@ -171,8 +186,6 @@ const BlogPage = ({ location, data }) => {
               {uniqueSeriesNames.map(seriesName => {
                 const totalParts = seriesGroups[seriesName].length;
                 const folderDesc = seriesGroups[seriesName][0].frontmatter.description;
-                
-                // Formats the URL exactly the same way gatsby-node did
                 const formattedSlug = seriesName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
                 const seriesUrl = `/blog/${formattedSlug}`;
 
@@ -181,6 +194,7 @@ const BlogPage = ({ location, data }) => {
                     key={seriesName} 
                     to={seriesUrl}
                     className="folder-card"
+                    onClick={saveScroll}
                   >
                     <div className="folder-icon">📂</div>
                     <h3>{seriesName}</h3>
@@ -204,7 +218,7 @@ const BlogPage = ({ location, data }) => {
                 });
 
                 return (
-                  <Link key={i} to={slug} className="article-card">
+                  <Link key={i} to={slug} className="article-card" onClick={saveScroll}>
                     <span className="date">{formattedDate}</span>
                     <h3>{title}</h3>
                     <p>{description}</p>
