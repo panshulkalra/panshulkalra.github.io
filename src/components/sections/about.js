@@ -135,10 +135,20 @@ const About = () => {
         <StyledText>
           <div>
             <p>
-              Hello! My name is Panshul.
+             My journey into Computer Engineering is driven by a desire to solve complex, high stakes problems. 
+             While my expertise lies in Machine Learning architecures, I believe the most effective Engineers are multidimensional. 
+             To that end, I actively maintain a blog where I explore a variety of interesting topics that catch my curiosity. 
+             Writing allows me to step back from the code, synthesize new ideas, and share compelling perspectives on the world around me.
+             Beyond technology and writing, music is a core part of who I am. I'm formally trained in Western Vocals through the London College of Music Examinations. 
+             Having performed ever since I was 8 years old, my time on stage has given me a deep, lifelong connection to the performing arts and creative expression.
+             I have also undergone dedicated training in Communication Skills through Trinity College London. 
+             This specialized coursework focuses on the mechanics of effective public speaking, interpersonal dynamics, and the ability to articulate ideas
+             with absolute clarity and confidence in any environment.
+
+             
             </p>
 
-            <p>Here are a few languages I’ve been using and learning:</p>
+            <p>Here are a technologies I’ve been using and learning:</p>
           </div>
 
           <ul className="skills-list">
