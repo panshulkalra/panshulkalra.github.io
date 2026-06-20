@@ -4,8 +4,8 @@ description: 'The rise of Nvidia'
 date: '2026-06-18'
 slug: '/blog/nvidia-series/part-1'
 series: 'Nvidia Series'
-
----
+tags:
+  - Nvidia part-1.
 
 > "It's a funny thing about life; if you refuse to accept anything but the best, you very often get it," — W. Somerset Maugham
 
