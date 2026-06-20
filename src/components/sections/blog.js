@@ -55,13 +55,12 @@ const Blog = () => {
 
   return (
     <StyledBlogSection id="blog" ref={revealContainer}>
-      <h2 className="numbered-heading overline">Technical Writing</h2>
-      <h2 className="title">Read My Blog.</h2>
+      <h2 className="title">My Blogs.</h2>
       <p>
-        I frequently write about my journey in computer engineering, deep dives into machine learning algorithms, and thoughts on energy flexibility markets like the India Energy Stack and Negawatts. Check out my latest articles.
+       A space for ideas, observations, and deep dives into the topics I find fascinating.
       </p>
       <Link className="blog-link" to="/blog">
-        View Articles
+        Read Blogs
       </Link>
     </StyledBlogSection>
   );
