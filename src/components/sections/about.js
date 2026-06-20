@@ -148,7 +148,7 @@ const About = () => {
              
             </p>
 
-            <p>Here are a technologies I’ve been using and learning:</p>
+            <p>Here are a few technologies I’ve been using and learning:</p>
           </div>
 
           <ul className="skills-list">
