@@ -55,7 +55,7 @@ const Blog = () => {
 
   return (
     <StyledBlogSection id="blog" ref={revealContainer}>
-      <h2 className="title">My Blogs.</h2>
+      <h2 className="title">My Blogs</h2>
       <p>
        A space for ideas, observations, and deep dives into the topics I find fascinating.
       </p>
