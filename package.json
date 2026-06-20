@@ -1,14 +1,17 @@
 {
-  "name": "v4",
-  "description": "Personal Website V4",
+  "name": "panshul-kalra-portfolio",
+  "description": "Personal Website and Publications of Panshul Kalra",
   "version": "1.0.0",
-  "author": "Brittany Chiang <brittany.chiang@gmail.com>",
+  "author": "Panshul Kalra",
   "repository": {
     "type": "git",
-    "url": "https://github.com/bchiang7/v4"
+    "url": "https://github.com/panshulkalra/panshulkalra.github.io"
   },
   "keywords": [
-    "gatsby"
+    "gatsby",
+    "machine learning",
+    "portfolio",
+    "react"
   ],
   "license": "MIT",
   "browserslist": "> 0.25%, not dead",
