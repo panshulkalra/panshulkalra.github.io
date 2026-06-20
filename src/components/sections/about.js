@@ -142,8 +142,8 @@ const About = () => {
              Beyond technology and writing, music is a core part of who I am. I'm formally trained in Western Vocals through the London College of Music Examinations. 
              Having performed ever since I was 8 years old, my time on stage has given me a deep, lifelong connection to the performing arts and creative expression.
              I have also undergone dedicated training in Communication Skills through Trinity College London. 
-             This specialized coursework focuses on the mechanics of effective public speaking, interpersonal dynamics, and the ability to articulate ideas
-             with absolute clarity and confidence in any environment.
+             This specialized coursework focuses on the mechanics of effective public speaking, interpersonal dynamics and the ability to articulate ideas
+             with clarity and confidence in any environment.
 
              
             </p>
