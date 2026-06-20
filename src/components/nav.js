@@ -142,6 +142,33 @@ const StyledLinks = styled.div`
   }
 `;
 
+/* NEW: Responsive Back Button Wrapper */
+const StyledBackButtonHeader = styled.header`
+  position: absolute;
+  top: 40px;
+  left: 50px;
+  z-index: 99;
+
+  /* Mobile adjustment: Pulls it tighter into the top corner */
+  @media (max-width: 768px) {
+    top: 25px;
+    left: 20px;
+  }
+
+  button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    color: var(--green);
+    transition: var(--transition);
+
+    &:hover {
+      transform: translateX(-5px);
+    }
+  }
+`;
+
 const Nav = ({ isHome }) => {
   const [isMounted, setIsMounted] = useState(!isHome);
   const scrollDirection = useScrollDirection('down');
@@ -203,7 +230,7 @@ const Nav = ({ isHome }) => {
     </a>
   );
 
-// Bypass the main navigation on all non-home pages
+  // Bypass the main navigation on all non-home pages
   if (!isHome) {
     const handleSmartBack = (e) => {
       e.preventDefault();
@@ -230,27 +257,14 @@ const Nav = ({ isHome }) => {
     };
 
     return (
-      <header style={{ position: 'absolute', top: '40px', left: '50px', zIndex: 99 }}>
-        <button 
-          onClick={handleSmartBack} 
-          aria-label="Go back up one level" 
-          style={{ 
-            background: 'none', 
-            border: 'none', 
-            padding: 0, 
-            cursor: 'pointer', 
-            color: 'var(--green)',
-            transition: 'var(--transition)'
-          }}
-          onMouseOver={(e) => e.currentTarget.style.transform = 'translateX(-5px)'}
-          onMouseOut={(e) => e.currentTarget.style.transform = 'translateX(0px)'}
-        >
+      <StyledBackButtonHeader>
+        <button onClick={handleSmartBack} aria-label="Go back up one level">
           <svg width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <line x1="19" y1="12" x2="5" y2="12"></line>
             <polyline points="12 19 5 12 12 5"></polyline>
           </svg>
         </button>
-      </header>
+      </StyledBackButtonHeader>
     );
   }
 

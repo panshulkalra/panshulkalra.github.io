@@ -9,6 +9,11 @@ const StyledMainContainer = styled.main`
   max-width: 1000px;
   margin: 0 auto;
 
+  /* NEW: Forces the content down on mobile so it clears the back arrow */
+  @media (max-width: 768px) {
+    padding-top: 120px;
+  }
+
   header {
     text-align: center;
     margin-bottom: 60px;
