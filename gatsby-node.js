@@ -9,8 +9,9 @@ const path = require('path');
 exports.createPages = async ({ actions, graphql, reporter }) => {
   const { createPage } = actions;
   const postTemplate = path.resolve(`src/templates/post.js`);
+  const projectTemplate = path.resolve(`src/templates/project.js`); // NEW: Project Template Blueprint
 
-  // UPDATED: Added 'series' to the GraphQL query so the backend can read your tags
+  // Query both Posts and Projects
   const result = await graphql(`
     {
       postsRemark: allMarkdownRemark(
@@ -27,40 +28,50 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
           }
         }
       }
+      projectsRemark: allMarkdownRemark(
+        filter: { fileAbsolutePath: { regex: "/content/projects/" } }
+        sort: { order: DESC, fields: [frontmatter___date] }
+        limit: 1000
+      ) {
+        edges {
+          node {
+            frontmatter {
+              slug
+            }
+          }
+        }
+      }
     }
   `);
 
-  // Handle errors
   if (result.errors) {
     reporter.panicOnBuild(`Error while running GraphQL query.`);
     return;
   }
 
-  // Create post detail pages
+  // --- 1. CREATE BLOG POST PAGES ---
   const posts = result.data.postsRemark.edges;
-
   posts.forEach(({ node }) => {
-    createPage({
-      path: node.frontmatter.slug,
-      component: postTemplate,
-      context: {},
-    });
+    if (node.frontmatter.slug) {
+      createPage({
+        path: node.frontmatter.slug,
+        component: postTemplate,
+        context: {},
+      });
+    }
   });
 
-  // --- THE NEW SERIES GENERATOR ---
+  // --- 2. CREATE BLOG SERIES PAGES ---
   const seriesTemplate = path.resolve('./src/templates/series.js');
   const seriesSet = new Set();
   
-  // Find all unique series names
   posts.forEach(({ node }) => {
     if (node.frontmatter.series) {
       seriesSet.add(node.frontmatter.series);
     }
   });
 
-  // Create a true server-side page for each series folder
   seriesSet.forEach(seriesName => {
-    // Converts "Nvidia" to "nvidia" to make clean slugs
     const formattedSlug = seriesName.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
     const seriesUrl = `/blog/${formattedSlug}`;
 
@@ -68,31 +79,33 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       path: seriesUrl,
       component: seriesTemplate,
       context: {
-        series: seriesName, // Passes the exact name to the template's GraphQL query
+        series: seriesName,
       },
     });
   });
-  // --------------------------------
+
+  // --- 3. CREATE PROJECT CASE STUDY PAGES ---
+  const projects = result.data.projectsRemark.edges;
+  projects.forEach(({ node }) => {
+    if (node.frontmatter.slug) {
+      createPage({
+        path: node.frontmatter.slug,
+        component: projectTemplate,
+        context: {},
+      });
+    }
+  });
 };
 
-// https://www.gatsbyjs.org/docs/node-apis/#onCreateWebpackConfig
+// --- WEBPACK CONFIG (DO NOT TOUCH) ---
 exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
   if (stage === 'build-html' || stage === 'develop-html') {
     actions.setWebpackConfig({
       module: {
         rules: [
-          {
-            test: /scrollreveal/,
-            use: loaders.null(),
-          },
-          {
-            test: /animejs/,
-            use: loaders.null(),
-          },
-          {
-            test: /miniraf/,
-            use: loaders.null(),
-          },
+          { test: /scrollreveal/, use: loaders.null() },
+          { test: /animejs/, use: loaders.null() },
+          { test: /miniraf/, use: loaders.null() },
         ],
       },
     });
