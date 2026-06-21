@@ -21,53 +21,76 @@ const StyledProjectsContainer = styled.main`
     list-style: none;
     padding: 0;
     margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
   }
 
   .project-item {
-    margin-bottom: 20px;
-    padding: 25px;
-    border-radius: var(--border-radius);
-    background-color: var(--light-navy);
     transition: var(--transition);
-    border: 1px solid transparent;
 
     &:hover {
       transform: translateY(-5px);
-      border-color: var(--green);
+    }
+
+    a {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 2.5rem 2rem;
+      height: 100%;
+      min-height: 300px; /* Forces the clean square aesthetic */
+      background-color: var(--light-navy);
+      border-radius: var(--border-radius);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); /* Soft depth shadow */
+      text-decoration: none;
+      border: 1px solid transparent;
+
+      &:hover,
+      &:focus {
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+    }
+
+    .folder-icon {
+      font-size: 35px;
+      margin-bottom: 25px;
     }
 
     h3 {
       margin-bottom: 10px;
-      font-size: clamp(24px, 3vw, 28px);
+      font-size: clamp(20px, 3vw, 24px);
+      color: var(--lightest-slate);
+    }
 
-      a {
-        color: var(--lightest-slate);
-        text-decoration: none;
-        
-        &:hover {
-          color: var(--green);
-        }
-        
-        &::after {
-          display: none;
-        }
-      }
+    .project-desc {
+      font-size: var(--fz-md);
+      color: var(--slate);
+      margin-bottom: 20px;
+      line-height: 1.5;
+      flex-grow: 1; /* Pushes the date cleanly to the bottom */
     }
 
     .project-meta {
       font-family: var(--font-mono);
-      font-size: var(--fz-sm);
-      color: var(--green);
+      font-size: var(--fz-xs);
+      color: var(--light-slate);
+      display: flex;
+      align-items: center;
+      
+      &::before {
+        content: '⚡'; /* Lightning bolt icon to match the blog aesthetic */
+        margin-right: 8px;
+        font-size: 12px;
+      }
     }
   }
 `;
 
-// FIXED: Added location prop here
 const ProjectsPage = ({ location, data }) => {
   const projects = data.allMarkdownRemark.edges;
 
   return (
-    // FIXED: Passed location prop to Layout here
     <Layout location={location}>
       <Helmet title="Projects | Panshul Kalra" />
       <StyledProjectsContainer>
@@ -80,16 +103,20 @@ const ProjectsPage = ({ location, data }) => {
           {projects.length > 0 ? (
             projects.map(({ node }, i) => {
               const { frontmatter } = node;
-              const { title, slug, date } = frontmatter;
+              const { title, slug, date, description } = frontmatter;
 
               return (
                 <li className="project-item" key={i}>
-                  <h3>
-                    <Link to={slug}>{title}</Link>
-                  </h3>
-                  <div className="project-meta">
-                    {date && <span>{date}</span>}
-                  </div>
+                  <Link to={slug}>
+                    <div>
+                      <div className="folder-icon">📁</div>
+                      <h3>{title}</h3>
+                      {description && <p className="project-desc">{description}</p>}
+                    </div>
+                    <div className="project-meta">
+                      {date && <span>{date}</span>}
+                    </div>
+                  </Link>
                 </li>
               );
             })
@@ -104,6 +131,7 @@ const ProjectsPage = ({ location, data }) => {
 
 export default ProjectsPage;
 
+// NEW: Added 'description' to the query so the card subtext populates
 export const pageQuery = graphql`
   query {
     allMarkdownRemark(
@@ -116,6 +144,7 @@ export const pageQuery = graphql`
             date(formatString: "MMMM YYYY")
             title
             slug
+            description 
           }
         }
       }
