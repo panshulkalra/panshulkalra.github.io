@@ -7,7 +7,7 @@ github: 'https://github.com/panshulkalra/Live-Commerce-Segmenter-'
 ---
 
 ## The Objective
-The goal of this project was to discover underlying patterns in social media commerce by analyzing engagement data from Facebook Live sellers. By segmenting different types of live streams based on user interaction, we can mathematically identify the drivers of high-converting content.
+The goal of this project is to discover underlying patterns in social media commerce by analyzing engagement data from Facebook Live sellers. By segmenting different types of live streams based on user interaction, we can mathematically identify the drivers of high-converting content.
 
 ## Technical Methodology
 This project heavily utilized **Python** for data processing and unsupervised machine learning, focusing specifically on clustering algorithms.
