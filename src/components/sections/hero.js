@@ -61,13 +61,13 @@ const Hero = () => {
     return () => clearTimeout(timeout);
   }, []);
 
-  const one = <h1>Hi, my name is</h1>;
+  const one = <h1>Hello, my name is</h1>;
   const two = <h2 className="big-heading">Panshul Kalra.</h2>;
-  const three = <h3 className="big-heading">I build data-driven analytical models.</h3>;
+  const three = <h3 className="big-heading">I build data driven analytical models.</h3>;
   const four = (
     <>
       <p>
-       I am an engineering student focused on building Machine Learning applications that utilise Python, Pandas, and Scikit-Learn.
+       I am technology enthusiast focused on building Machine Learning applications that utilise Python, Pandas, and Scikit-Learn.
        I have developed analytical programs ranging from sales forecasting tools and sophisticated clustering models to 
        my current bioinformatics research building clinical outcome models for cancer datasets. 
        Beyond developing predictive architectures, I am also deeply interested in applying technology to sustainability and ESG frameworks.
