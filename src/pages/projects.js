@@ -7,10 +7,12 @@ import { Layout } from '@components';
 const StyledProjectsContainer = styled.main`
   max-width: 1000px;
   margin: 0 auto;
-  padding: 100px 0;
+  /* CHANGED: Added 50px side padding for desktop */
+  padding: 100px 50px; 
 
   @media (max-width: 768px) {
-    padding: 80px 0;
+    /* CHANGED: Added 25px side padding for mobile */
+    padding: 80px 25px; 
   }
 
   header {
@@ -39,10 +41,10 @@ const StyledProjectsContainer = styled.main`
       justify-content: space-between;
       padding: 2.5rem 2rem;
       height: 100%;
-      min-height: 300px; /* Forces the clean square aesthetic */
+      min-height: 300px; 
       background-color: var(--light-navy);
       border-radius: var(--border-radius);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); /* Soft depth shadow */
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); 
       text-decoration: none;
       border: 1px solid transparent;
 
@@ -68,7 +70,7 @@ const StyledProjectsContainer = styled.main`
       color: var(--slate);
       margin-bottom: 20px;
       line-height: 1.5;
-      flex-grow: 1; /* Pushes the date cleanly to the bottom */
+      flex-grow: 1; 
     }
 
     .project-meta {
@@ -79,7 +81,7 @@ const StyledProjectsContainer = styled.main`
       align-items: center;
       
       &::before {
-        content: '⚡'; /* Lightning bolt icon to match the blog aesthetic */
+        content: '⚡'; 
         margin-right: 8px;
         font-size: 12px;
       }
@@ -131,7 +133,6 @@ const ProjectsPage = ({ location, data }) => {
 
 export default ProjectsPage;
 
-// NEW: Added 'description' to the query so the card subtext populates
 export const pageQuery = graphql`
   query {
     allMarkdownRemark(

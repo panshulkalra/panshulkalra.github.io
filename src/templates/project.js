@@ -7,10 +7,12 @@ import { Layout } from '@components';
 const StyledProjectContainer = styled.main`
   max-width: 900px;
   margin: 0 auto;
-  padding: 100px 0;
+  /* CHANGED: Added 50px side padding for desktop */
+  padding: 100px 50px;
 
   @media (max-width: 768px) {
-    padding: 80px 0;
+    /* CHANGED: Added 25px side padding for mobile */
+    padding: 80px 25px;
   }
 `;
 
