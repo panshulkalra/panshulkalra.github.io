@@ -1,0 +1,5 @@
+{
+    "componentChunkName": "component---src-pages-projects-js",
+    "path": "/projects/",
+    "result": {"data":{"allMarkdownRemark":{"edges":[{"node":{"frontmatter":{"date":"February 2026","title":"Sales Prediction Algorithm","slug":"/projects/sales-prediction"}}}]}},"pageContext":{}},
+    "staticQueryHashes": ["1994492073"]}
