@@ -86,13 +86,15 @@ const StyledProjectContent = styled.div`
   }
 `;
 
-const ProjectTemplate = ({ data }) => {
+// FIXED: Added location prop here
+const ProjectTemplate = ({ location, data }) => {
   const { markdownRemark } = data;
   const { frontmatter, html } = markdownRemark;
   const { title, github } = frontmatter;
 
   return (
-    <Layout>
+    // FIXED: Passed location prop to Layout here
+    <Layout location={location}>
       <Helmet title={title} />
       <StyledProjectContainer>
         <StyledProjectHeader>

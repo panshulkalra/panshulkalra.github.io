@@ -62,11 +62,13 @@ const StyledProjectsContainer = styled.main`
   }
 `;
 
-const ProjectsPage = ({ data }) => {
+// FIXED: Added location prop here
+const ProjectsPage = ({ location, data }) => {
   const projects = data.allMarkdownRemark.edges;
 
   return (
-    <Layout>
+    // FIXED: Passed location prop to Layout here
+    <Layout location={location}>
       <Helmet title="Projects | Panshul Kalra" />
       <StyledProjectsContainer>
         <header>
