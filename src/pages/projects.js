@@ -7,16 +7,15 @@ import { Layout } from '@components';
 const StyledProjectsContainer = styled.main`
   max-width: 1000px;
   margin: 0 auto;
-  /* CHANGED: Added 50px side padding for desktop */
   padding: 100px 50px; 
 
   @media (max-width: 768px) {
-    /* CHANGED: Added 25px side padding for mobile */
     padding: 80px 25px; 
   }
 
   header {
     margin-bottom: 50px;
+    text-align: center; /* ADDED: Centers the heading and subtitle perfectly */
   }
 
   .project-list {
