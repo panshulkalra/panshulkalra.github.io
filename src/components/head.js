@@ -38,6 +38,23 @@ const Head = ({ title, description, image }) => {
     url: `${siteUrl}${pathname}`,
   };
 
+  // Structured Data (JSON-LD) to force Google Entity Recognition
+  const schemaOrgJSONLD = {
+    '@context': 'http://schema.org',
+    '@type': 'Person',
+    name: 'Panshul Kalra',
+    url: siteUrl,
+    jobTitle: 'Technology Enthusiast',
+    sameAs: [
+      'https://github.com/panshulkalra',
+      'https://in.linkedin.com/in/panshul-kalra-6808a9381',
+      'https://medium.com/@panshulkalra',
+      'https://www.facebook.com/panshul.kalra/',
+      'https://medium.com/@panshulkalra/an-overnight-success-30-years-in-the-making-37c3a7e88f72'
+      'https://www.instagram.com/panshonrepeat/',
+    ],
+  };
+
   return (
     <Helmet title={title} defaultTitle={seo.title} titleTemplate={`%s | ${defaultTitle}`}>
       <html lang="en" />
@@ -56,6 +73,9 @@ const Head = ({ title, description, image }) => {
       <meta name="twitter:title" content={seo.title} />
       <meta name="twitter:description" content={seo.description} />
       <meta name="twitter:image" content={seo.image} />
+
+      {/* Injecting the Schema directly into the DOM head */}
+      <script type="application/ld+json">{JSON.stringify(schemaOrgJSONLD)}</script>
     </Helmet>
   );
 };
