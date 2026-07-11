@@ -50,7 +50,7 @@ const Head = ({ title, description, image }) => {
       'https://in.linkedin.com/in/panshul-kalra-6808a9381',
       'https://medium.com/@panshulkalra',
       'https://www.facebook.com/panshul.kalra/',
-      'https://medium.com/@panshulkalra/an-overnight-success-30-years-in-the-making-37c3a7e88f72'
+      'https://medium.com/@panshulkalra/an-overnight-success-30-years-in-the-making-37c3a7e88f72',
       'https://www.instagram.com/panshonrepeat/',
     ],
   };
