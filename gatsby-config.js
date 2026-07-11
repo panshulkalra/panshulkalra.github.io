@@ -2,7 +2,7 @@ const config = require('./src/config');
 
 module.exports = {
   siteMetadata: {
-    title: 'Panshul Kalra',
+    title: 'Panshul Kalra | Portfolio ',
     description: 'I build data driven analytical models. Explorations in tech, strategy and systems.',
     siteUrl: 'https://panshulkalra.github.io', // No trailing slash allowed!
     image: '/og.png', 
