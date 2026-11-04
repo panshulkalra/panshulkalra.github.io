@@ -1,4 +1,13 @@
-A Supercomputer in Disguise
+---
+title: 'A Supercomputer in Disguise'
+description:  'How Nvidia turned their gaming GPUs into general-purpose supercomputers and quietly ignited the global AI revolution.'
+date: '2026-06-28'
+slug: '/blog/nvidia-series/part-4'
+series: 'Nvidia Series'
+tags:
+  - thoughts
+
+---
 
 "The real voyage of discovery consists not in seeking new landscapes, but in having new eyes." — Marcel Proust
 
