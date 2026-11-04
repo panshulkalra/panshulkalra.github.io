@@ -1,15 +1,14 @@
----
 title: 'A Supercomputer in Disguise'
-description:  'How Nvidia turned their gaming GPUs into general-purpose supercomputers and quietly ignited the global AI revolution.'
+description: 'How Nvidia turned their gaming GPUs into general-purpose supercomputers and quietly ignited the global AI revolution.'
 date: '2026-06-28'
 slug: '/blog/nvidia-series/part-4'
 series: 'Nvidia Series'
 tags:
-  - thoughts
 
----
+Thoughts
 
-"The real voyage of discovery consists not in seeking new landscapes, but in having new eyes." — Marcel Proust
+“The real voyage of discovery consists not in seeking new landscapes, but in having new eyes.”
+— Marcel Proust
 
 We are often conditioned to believe that finding what we are looking for requires venturing into the unknown. We travel to new cities for inspiration, change environments to find happiness and constantly search outside of ourselves to find answers, deeply convinced that whatever is missing from our lives must be far away. We equate distance with discovery, completely forgetting that we don't always have to go looking. We constantly ignore the possibility that what we are searching for is already resting within. It is a strange flaw in human nature that the longer we look at something, the less we actually see it. Familiarity breeds a kind of blindness. We assume that because something has always been used one way, that is the only way it can ever exist.
 
